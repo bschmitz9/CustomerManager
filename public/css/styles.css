@@ -1,0 +1,382 @@
+/*set all images to border-box, this is the default of bootstrap as well*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Set default body styling*/
+body {
+    color: #888;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+/* 
+==================
+NAVBAR STYLING
+================== */
+
+/*get the direct child image of the navbar-brand and set it to inline-block so appTitle sits next to it*/
+.navbar-brand > img{
+    display: inline-block;
+}
+
+/*set the color of the appTitle to white*/
+.appTitle {
+    color: #fff;
+}
+
+/*change the navbar color to a blue and give the navbar a set height*/
+.navbar-inner {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: #027FF4;
+    height: 82px;
+}
+
+/*the list items in the navbar*/
+.navBarPadding {
+    margin-left: 35px;
+    margin-top: 15px;
+}
+
+/*each link within the navbar list and the login/logout link*/
+.navBarPadding a,
+.navbar-link {
+    color: #fff;
+}
+
+/*over-ride bootstrap default hover color to change it to a gray color background and blue font*/
+.navBarPadding li a:hover,
+.navbar-link:hover {
+    background-color: #f6f6f6;
+    color: #0000ff;
+}
+
+
+/*
+==========================
+    LOGIN.HTML
+==========================
+*/
+.login {
+    margin-top: 35px;
+}
+ /*position relative as we have the error message position: absolute*/
+.login,
+.editForm {
+    position: relative;
+}
+
+/*the login page input fields*/
+.login input[type='email'],
+.login input[type='password'] {
+    padding: 7px;
+    margin-bottom: 5px;
+    width: 250px;
+}
+
+/*display the error message for all input fields*/
+.errorMessage {
+    position: absolute;
+    top: 6px;
+    left: 280px;
+    color: red;
+    font-weight: bold;
+}
+
+/*
+==========================
+    CUSTOMERS.HTML
+==========================
+*/
+/*sets styling for the ng-view where the partials will be loaded into the index page*/
+#ng-view {
+    position: relative;
+    padding-top: 75px;
+}
+
+
+.nav > li {
+    cursor: pointer;
+}
+
+/*gives color and padding to the view option links*/
+.nav > .toolbaritem > a {
+    color:black;
+    padding: 15px 25px;
+}
+
+/*background color to the different view options and add customer feature*/
+.toolbarviews {
+    background-color: #fafafa;
+}
+
+/* gives padding to all the glyphicons used in the customers view*/
+.card-view,
+.list-view,
+.add-customer,
+.edit {
+    padding-right: 10px;
+}
+
+/*moves the customers header over to align with the display options below it*/
+.customersHeader {
+    padding-left: 6px;
+}
+
+/*sets the border of the customer filter to a solid black border*/
+.filterCustomers {
+    border: 2px solid black
+}
+
+/*indent the entire customers partial to the left*/
+.indent {
+    margin-left: 5px;
+}
+
+/*set the display for the card view*/
+.cardContainer {
+    width: 85%; 
+}
+
+.card {
+    border: 1px solid  #d4d4d4;
+    height: 150px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.cardHeader {
+    background-color: #027FF4;
+    font-size: 90%;
+    color: white;
+    padding: 5px;
+    width: 100%;
+}
+
+.white {
+    color: white;
+}
+
+.white:hover {
+    color: white;
+}
+
+.cardClose {
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.cardClose:hover {
+    color: white;
+}
+
+.cardBody {
+    padding-left: 5px;
+}
+
+.cardBodyLeft {
+    margin-top: -5px;
+}
+
+.cardImage {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+.cardBodyContent{
+    width: 105px;
+}
+
+.cardBodyRight {
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.cardBodyOrders {
+    margin-top: 5px;
+    color: #000;
+}
+
+
+
+/*
+==========================
+ CUSTOMER LIST VIEW
+==========================
+*/
+
+.tableHeader {
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+}
+
+/*center the data in each table data cell*/
+.repeat-animation td {
+    text-align: center;
+}
+
+/*over ride bootstrap top-align class to set the info to middle*/
+table>tbody>tr>td.vert-align {
+    vertical-align: middle;
+}
+
+/*Style for the headers of the list view table */
+.customersTable tr:first-child th {
+    background-color: #027FF4;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/*
+===========================
+    CUSTOMER EDIT
+===========================
+*/
+/*give the edit for space on the bottom*/
+.editForm {
+    margin-bottom: 10px;
+}
+
+/*style the modal backdrop*/
+.modal {
+    display: block;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+.modal-backdrop,
+.modal-backdrop .fade .in {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.customerEdit .ng-valid, 
+.customerEdit .ng-valid-required {
+        border-left: 5px solid #57A83F;
+}
+
+.customerEdit .ng-invalid,
+.customerEdit .ng-invalid-required {
+        border-left: 5px solid #E03930;
+}
+
+.login .ng-valid,
+.login .ng-valid-required{
+        border-left: 5px solid #57A83F;
+} 
+
+.login .ng-invalid,
+.login .ng-invalid-required {
+        border-left: 5px solid #E03930;
+}
+
+/*space between the customer name and the start of the input fields*/
+.customerName {
+    margin-bottom: 25px;
+}
+
+/*design of the input forms on the add/edit form*/
+.customerEdit input[type='text'],
+.customerEdit input[type='email'],
+.customerEdit input[type='radio'],
+.customerEdit select {
+    padding: 7px;
+    margin-bottom: 5px;
+    width: 250px;
+}
+
+/*adjust the radio buttons so that they sit inline with one another*/
+.radio {
+    display: inline-block;
+    margin-top: 3px;
+    padding-left: 3px;
+}
+
+/*adjust the div where the success or error message sits*/
+.statusRow {
+    height: 60px;
+    margin-top: 25px;
+    margin-left:45px;
+}
+
+/*adjust the label sucess to have more padding and increase the size*/
+.label {
+    padding: 1.2em .6em 1.3em;
+    font-size: 90%;
+}
+
+/*adjust the glyphicons so that they are spaced out better within the success label*/
+.success,
+.update,
+.error {
+    font-size: 1.6em;
+    top: 5px;
+    left: 10px;
+    padding-right: 10px;
+}
+
+.btn-primary {
+    margin-left: 67px;
+}
+
+.btn-info {
+    margin-left: 23px;
+}
+
+/*remove the default bootstrap styling when a form element is focused*/
+.form-control:focus {
+    box-shadow: none;
+}
+
+/*
+===========================
+    ORDERS.HTML
+===========================
+*/
+.navbarText {
+    text-align: right;
+}
+
+.customerCount {
+    margin-top: 20px;
+}
+
+.product,
+.quantity,
+.price {
+    width: 33%;
+}
+
+/*
+===========================
+    FOOTER BOTTOM
+===========================
+*/
+.footer {
+    height: 75px;
+}
+
+/*set the display for the text inside the footer tags*/
+.developer {
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+}
+
+/*set the link to be the color white*/
+.developer a {
+    color: #fff;
+}
+

@@ -1,0 +1,48 @@
+<div class="modal-dialog">
+    <div class="modal-header">
+        {{modalText.headerText}}     
+    </div>
+
+    <div class="modal-body">
+        <p>{{modalText.bodyText}}</p>
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <label for="product" class="col-sm-2 control-label">Product</label>
+                <div class="col-sm-7">
+                   <select name="product" ng-model="order.product" class="form-control" multiple>
+                        <option value="">---Please select a product---</option>
+                        <option value="pen">Pen</option>
+                        <option value="pencil">Pencil</option>
+                        <option value="paper">Paper</option> 
+                  </select>
+                </div>
+            </div>
+             
+            
+             <div class="form-group" ng-show="order.product.length > 0">
+                <label for="quantity" class="col-sm-2 control-label">Quantity</label>
+                <div class="col-sm-7">
+                   <select name="quantity" ng-model="order.quantity" ng-change="calculateTotal()" class="form-control">
+                        <option value="">---Please select a quantity---</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option> 
+                  </select>
+                </div>
+            </div>
+
+            <div>
+                <p>Your total is: {{order.total | currency}}</p>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="modal-footer"> 
+        <button class="btn btn-primary" ng-click-"modalText.close()">{{modalText.closeButtonText}}</button>
+        <button class="btn btn-primary" ng-click="modalText.ok(order)">{{modalText.actionButtonText}}</button> 
+    </div>  
+
+</div>

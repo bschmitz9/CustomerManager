@@ -1,0 +1,192 @@
+<div class="view">
+    <div class="container">
+        <header class="editForm">
+            <h3><span class="edit glyphicon glyphicon-edit"></span>{{vm.title}} Customer</h3>
+        </header>
+
+        <!-- Add or Edit Customer-->
+        <form name="vm.editForm" novalidate>
+            <div class="customerEdit">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="customerName">{{vm.customer.firstName + " " + vm.customer.lastName}} 
+                                <span ng-hide="vm.customer._id === 0">(<a style="font-size:12pt" href="#/customerorder/{{vm.customer._id}}">View Orders</a>)</span>
+                        </h4>  
+                    </div>
+                </div>
+
+                <!-- Last Name -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="firstName">First Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.customer.firstName" placeholder="Please Enter First Name" required>
+                        <span class="errorMessage" ng-show="vm.editForm.firstName.$touched && vm.editForm.firstName.$invalid">
+                            First Name is Required!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Last Name -->
+                <div class="row">
+                     <div class="col-md-2">
+                        <label for="lastName">Last Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="lastName" id="lastName" class="form-control" ng-model="vm.customer.lastName" placeholder="Please Enter Last Name" required>
+                        <span class="errorMessage" ng-show="vm.editForm.lastName.$touched && vm.editForm.lastName.$invalid">
+                            Last Name is Required!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Gender Options -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="gender">Gender:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="radio">
+                            <label class="radio">
+                                <input type="radio" name="gender" id="gender" value="Male" 
+                                    ng-checked="vm.customer.gender === 'Male'" 
+                                    ng-model="vm.customer.gender">
+                               Male
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label class="radio">
+                                <input type="radio" name="gender" id="gender" value="Female"
+                                    ng-checked="vm.customer.gender === 'Female'"
+                                    ng-model="vm.customer.gender">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Selection --> 
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="email">Email:</label>
+                    </div>
+                     <!-- allowInvalid added below so that the model isn't wiped
+                        out (the default behavior) if email is determined to be invalid due to being a duplicate-->
+                    <div class="col-md-9">
+                        <input type="email" name="userEmail" id="email" 
+                            class="form-control customer-form" 
+                            ng-model="vm.customer.email" 
+                            ng-model-options ="{updateOn: 'blur' , allowInvalid: true }"
+                            placeholder="Please Enter Your Email" 
+                            unique-email
+                            unique-email-key="vm.customer"
+                            unique-email-property="email"
+                            ng-minLength="3" 
+                            required>
+                        <span class="errorMessage" ng-show="vm.editForm.userEmail.$touched && vm.editForm.userEmail.$error.email">
+                            A valid email is required!
+                        </span>
+                        <span class="errorMessage" ng-show="vm.editForm.userEmail.$touched && vm.editForm.userEmail.$error.unique">
+                            This email is already taken!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Address Selection -->
+                 <div class="row">
+                     <div class="col-md-2">
+                        <label for="address">Address:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="address" id="address" class="form-control" ng-model="vm.customer.address" placeholder="Please Enter Your Address" class="customer-form" required>
+                        <span class="errorMessage" ng-show="vm.editForm.address.$touched && vm.editForm.address.$invalid">Address is Required!</span>
+                    </div>
+                </div>
+
+                <!-- City Selection -->
+                <div class="row">
+                     <div class="col-md-2">
+                        <label for="city">City:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="city" id="city" class="form-control" ng-model="vm.customer.city" placeholder="Please Enter Your City" required>
+                        <span class="errorMessage" ng-show="vm.editForm.city.$touched && vm.editForm.city.$invalid">
+                            City is Required! 
+                        </span>
+                    </div>
+                </div>
+
+                <!-- State Selection -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="state">State:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select name="state" id="state" class="form-control" ng-model="vm.customer.stateId" ng-options="state._id as state.name for state in vm.states">
+                            <option value="">---Please select a state---</option>
+                            <option value=""></option>
+                        </select> 
+                        <span class="errorMessage" ng-show="vm.editForm.state.$touched && vm.editForm.state.$invalid">
+                            State is Required!
+                        </span>
+                    </div>
+                </div> 
+
+                <!-- Zip Code Selection -->
+                <div class="row">
+                     <div class="col-md-2">
+                        <label for="zip">Zip Code:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="zip" id="zip" class="form-control" ng-model="vm.customer.zipcode" placeholder="Please Enter Your Zip Code" ng-minlength="5" ng-maxlength="5" required>
+                        <span class="errorMessage" ng-show="vm.editForm.zip.$touched && vm.editForm.zip.$invalid && vm.editForm.zip.$error.minlength || vm.editForm.zip.$error.maxlength">
+                            Zip Code Must be 5 Characters! 
+                        </span>
+                    </div>
+                </div>  
+
+                <!-- Submit or Delete Button -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="submit" ng-class="{ 'btn btn-primary' : vm.customer._id === 0, 'btn btn-info': vm.customer._id !== 0}" ng-click="vm.saveCustomer()" 
+                            ng-disabled="vm.editForm.$invalid || !vm.editForm.$dirty"> 
+                                    {{vm.buttonText}}
+                         </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" ng-hide="vm.customer._id === 0" ng-click="vm.deleteCustomer()">Delete Customer</button>
+                    </div>
+                </div>
+
+                <!-- Success or Error Message -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="statusRow">
+                            <div ng-class="{'label label-primary' : vm.addCustomer, 'label label-info': vm.updateStatus}" ng-show="vm.addCustomer || vm.updateStatus">
+                                <span class="success glyphicon glyphicon-thumbs-up icon-white"></span>&nbsp;&nbsp;
+                                    <span ng-show="vm.addCustomer">Custom Added!</span>
+                                    <span ng-show="vm.updateStatus">Customer Updated!</span>
+                            </div>
+                        </div>
+
+                         <div class="statusRow">
+                            <div class="label label-warning" ng-show="vm.errorMessage">
+                                <span class="error glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;  
+                                Error: {{vm.errorMessage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>

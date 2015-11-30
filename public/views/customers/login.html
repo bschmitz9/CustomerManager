@@ -1,0 +1,50 @@
+<div class="view">
+    <div class="container">    
+        <header>
+            <h3><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Login</h3>
+        </header>
+        <form name="loginForm" novalidate>
+            <div class="login">
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="email" name="email" class="form-control" ng-model="vm.email" 
+                            ng-minLength="10" placeholder="Please enter your email" required>
+                        <span class="errorMessage" ng-show="loginForm.email.$touched && loginForm.email.$error.email">A Valid Email is Required!</span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password" name="password" class="form-control" ng-model="vm.password" minlength="6" placeholder="Please enter your password" required>
+                        <span class="errorMessage" ng-show="loginForm.password.$touched && loginForm.password.$error.minlength">Password must be atleast 6 characters!</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary"
+                            ng-click="vm.login()"
+                            ng-disabled="loginForm.$invalid || !loginForm.$dirty"> 
+                            Login
+                        </button>
+                    </div>                
+                </div>
+                    
+                <div class="statusRow">
+                    <div class="label label-important" ng-show="vm.errorMessage">
+                        <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;        Error: {{ vm.errorMessage }}   
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

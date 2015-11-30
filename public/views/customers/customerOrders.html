@@ -1,0 +1,37 @@
+<div class="orders view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Customer Orders</h3>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Orders for: 
+                        <a href="" ng-click="vm.getCustomerId(vm.customer)">
+                            {{vm.customer.firstName + " " + vm.customer.lastName}} <i class="icon-edit editIcon"></i>
+                        </a>
+                    </h4>
+                    <p>{{vm.customer.city + ", " + vm.customer.state.name + " " + vm.customer.zipcode}}</p>
+                    <p><strong>Total Orders:</strong> {{vm.customer.orders.length}}</p>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" ng-click="vm.addOrder(vm.customer)">Add Order</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                     <order-table customer="vm.customer">
+                    </order-table>
+                </div>
+            </div>
+
+            <div class="row statusRow">
+                    <div class="col-md-12" ng-class="{'label label-success' : vm.orderAdded, 'label label-warning' : vm.orderFailed}" ng-show="vm.orderAdded || vm.orderFailed ">
+                        <span class="success glyphicon glyphicon-thumbs-up icon-white"></span>&nbsp;&nbsp;
+                            <span ng-show="vm.orderAdded" class="text-center">{{vm.buttonText}}</span>
+                    </div>
+            </div> 
+        </div>
+    </div>
+</div>

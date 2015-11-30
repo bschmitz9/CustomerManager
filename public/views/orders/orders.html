@@ -1,0 +1,39 @@
+<div class="orders view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;All Customer Orders</h3>
+        </header>
+        <br>
+        <div class="customerSearch row">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="search" class="col-sm-3 navbarText">Filter By Name/Product:</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control novalidate filterCustomers" id="search" placeholder="Filter Orders Here" ng-model="vm.searchText" ng-change="vm.searchTextChanged()">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 repeat-animation" ng-repeat="customer in vm.filteredCustomers | orderBy: 'lastName' ">
+                    <div>
+                        <h4><a href="" ng-click="vm.getCustomerId(customer)">{{customer.firstName + " " + customer.lastName }}</a></h4>
+                    </div>
+                    <order-table customer="customer">
+                    </order-table>
+                </div>
+            </div>
+            <div class="row show-hide-animation" ng-show="vm.customers.length === 0">
+                <div class="col-md-12">
+                    <h4>No Customers Found</h4>
+                </div>
+            </div>
+            <div class="row show-hide-animation customerCount" ng-show="vm.customers.length > 0">
+                <h5>Showing {{vm.filteredCount}} of {{vm.totalRecords}} Total Customers</h5>
+            </div>
+        </div>
+
+    </div>
+</div>
